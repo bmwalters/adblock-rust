@@ -794,6 +794,17 @@ mod ab2cb_tests {
                 ]
             }
         }]"####);
+        test_from_abp("||allestörungen.at^$third-party", r####"[{
+            "action": {
+                "type": "block"
+            },
+            "trigger": {
+                "url-filter": "^[^:]+:(//)?([^/]+\\.)?xn--allestrungen-9ib\\.at",
+                "load-type": [
+                    "third-party"
+                ]
+            }
+        }]"####);
         test_from_abp("||anet*.tradedoubler.com^$third-party", r####"[{
             "action": {
                 "type": "block"
@@ -1016,6 +1027,18 @@ mod ab2cb_tests {
                     "*majorleaguegaming.com",
                     "*pbs.org",
                     "*wikihow.com"
+                ]
+            }
+        }]"####);
+        test_from_abp("@@||googletagservices.com/tag/js/gpt.js$domain=allestoringen.nl|allestörungen.at", r####"[{
+            "action": {
+                "type": "ignore-previous-rules"
+            },
+            "trigger": {
+                "url-filter": "^[^:]+:(//)?([^/]+\\.)?googletagservices\\.com/tag/js/gpt\\.js",
+                "if-domain": [
+                    "*allestoringen.nl",
+                    "*xn--allestrungen-9ib.at"
                 ]
             }
         }]"####);
